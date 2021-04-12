@@ -3,6 +3,37 @@ Swagger UI for Python web framework, such Tornado, Flask, Quart, aiohttp, Sanic 
 
 Only support Python3.
 
+## Why this fork?
+This fork has been created in order to create a list of parameters to replace corresponding placeholders 
+in the swagger.
+
+Example:
+
+the `swagger.yml`
+```yml
+openapi: "3.0.0"
+info:
+  description: 'API description'
+  version: '{version}'
+  title: 'API title'
+...
+```
+the `main.py` (example for falcon)
+
+```python
+falcon_api_doc(
+    app,
+    config_path="./documentation/swagger.yml",
+    url_prefix="/apidocs",
+    title='API title',
+    version='0.9.9',
+    # add all the parameters you need as kwargs, just be sure you created the corresponding placeholder first 
+)
+```
+
+check the `http://localhost:8000/apidocs`
+
+
 ## Supported
 
 - tornado
