@@ -9,12 +9,12 @@ in the swagger.
 
 Example:
 
-the `swagger.yml`
+the `swagger.yml`, please note that the placeholders have the following enclosure: "###" (so, the placeholder 'version' would be '###version###')
 ```yml
 openapi: "3.0.0"
 info:
   description: 'API description'
-  version: '{version}'
+  version: '###version###'
   title: 'API title'
 ...
 ```
