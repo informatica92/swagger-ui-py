@@ -62,10 +62,21 @@ class Interface(object):
             url_prefix=self._url_prefix, title=self._title, config_url=self._uri('/swagger.json')
         )
 
+    @staticmethod
+    def format(base_str: bytes, params_dict:dict):
+        if params_dict is not None:
+            tmp_str = base_str.decode()
+            for k in params_dict:
+                tmp_str = tmp_str.replace(f'###{k}###', params_dict[k])
+            return tmp_str.encode()
+        else:
+            return base_str
+
     def _load_config(self, config_str: bytes):
-        if self._params is not None:
-            # print(config_str.decode())
-            config_str = config_str.decode().format(**self._params).encode()
+
+        # format placeholders
+        config_str = self.format(config_str, self._params)
+
         try:
             return json.loads(config_str)
         except ValueError:

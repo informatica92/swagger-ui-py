@@ -28,7 +28,7 @@ def load_requirements():
 if __name__ == '__main__':
     setup(
         name='swagger-ui-py',
-        version='1.3.2',
+        version='1.3.3',
         description=DESCRIPTION,
         long_description=readme(),
         long_description_content_type='text/markdown',
